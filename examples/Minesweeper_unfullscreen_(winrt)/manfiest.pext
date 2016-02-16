@@ -1,0 +1,11 @@
+{
+	"Name": "Minesweeper",
+	"Publisher": "Dave",
+	"Version": "2.0",
+	"Description": "Undo fullscreen",
+	"AppxPackageFamilyName": "Microsoft.MicrosoftMinesweeper_8wekyb3d8bbwe",
+	"js_Files": [
+		"ext.js",
+		"resume.js"
+	],
+}

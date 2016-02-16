@@ -1,0 +1,10 @@
+{
+	"Name": "Outlook",
+	"Publisher": "Dave",
+	"Version": "1.0",
+	"Description": "",
+	"Exe": "outlook.exe",
+	"js_Files": [
+		"ext.js"
+	],
+}

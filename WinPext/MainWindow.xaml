@@ -1,0 +1,78 @@
+﻿<Window x:Class="frida_windows_package_manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:frida_windows_package_manager"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindow, IsDesignTimeCreatable=True}"
+        SizeToContent="Height"
+        Title="Package Manager" Height="350" Width="500">
+    <Grid Margin="16">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock FontFamily="Segoe UI"
+                   FontWeight="Light"
+                   FontSize="34"
+                   Name="TitleText"
+                   Margin="4">Installed Packages</TextBlock>
+
+        <ListView Grid.Row="1"
+                  Name="PackageList"
+                  ItemsSource="{Binding Packages,Mode=OneWay}" 
+                  BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" Width="{Binding ElementName=PackageList,Path=ActualWidth}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Margin="0,0" Text="{Binding Manifest.Name}" />
+
+                        <TextBlock Grid.Row="1" FontSize="13" TextWrapping="Wrap" FontWeight="Normal" Margin="0,0,0,0" Text="{Binding ExtendsFriendlyName}" />
+                        
+                        <WrapPanel Margin="32,0,32,0"  Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <TextBlock FontWeight="Bold" Text="{Binding Manifest.Version}" />
+                            <TextBlock FontWeight="Normal"  Margin="8,0,0,0" Text="{Binding Manifest.Publisher}" />
+                        </WrapPanel>
+
+                        <Grid Grid.Column="1" Grid.RowSpan="2" 
+                              Grid.Row="1"
+                              VerticalAlignment="Center"
+                              Margin="32,0,32,0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <local:ElevatedActionButton
+                                FontWeight="Normal" 
+                                MinWidth="120"
+                                Margin="4"
+                                Tag="Remove"
+                                Padding="8,4" Click="UninstallPackageButton_Click" />
+                        </Grid>
+
+                        <TextBlock Grid.Row="2" FontWeight="Normal" TextWrapping="Wrap" Text="{Binding Manifest.Description}" Margin="0,0,0,0" />
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+{
+	"Name": "Xbox",
+	"Publisher": "Dave",
+	"Version": "2.0",
+	"Description": "Undo fullscreen",
+	"AppxPackageFamilyName": "Microsoft.XboxApp_8wekyb3d8bbwe",
+	"js_Files": [
+		"ext.js",
+		"resume.js"
+	],
+}

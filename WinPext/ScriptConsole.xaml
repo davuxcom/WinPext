@@ -1,0 +1,68 @@
+﻿<Window x:Class="frida_windows_package_manager.ScriptConsole"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:frida_windows_package_manager"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="{Binding TitleText}" Height="500" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="Quit" Click="Quit_Click" />
+            <MenuItem Header="Clear" Click="Clear_Click" />
+
+            <MenuItem Header="Tools">
+                <MenuItem Header="Reload Script" Click="Reload_Click" />
+                <MenuItem Header="Open Script" Click="Open_Click" />
+                <MenuItem Header="Focus Main Window" Click="Focus_Click" />
+                <MenuItem Header="Debugger">
+                    <MenuItem Name="Debugger_Disable" IsCheckable="True" IsChecked="False" Header="Enable" Click="DebugEnable_Click"/>
+                    <MenuItem Name="Debugger_Enable" IsCheckable="True" IsChecked="True" Header="Disable" Click="DebugDisable_Click" />
+                </MenuItem>
+                <MenuItem Header="Unload Script" Click="Detach_Click" />
+            </MenuItem>
+            
+            
+            
+
+
+        </Menu>
+        
+        <ListView Name="MessageList" 
+                  Grid.Row="1"
+                  ItemsSource="{Binding Messages}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.CanContentScroll="False"
+                  KeyDown="MessageList_KeyDown">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding MessageClass}" />
+                        <TextBlock Grid.Column="1" Foreground="{Binding TagBrush}" Text="{Binding MessageType}" />
+                        <TextBlock Grid.Column="2" TextWrapping="Wrap" Text="{Binding Content}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

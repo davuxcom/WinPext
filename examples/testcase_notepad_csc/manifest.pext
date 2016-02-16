@@ -1,0 +1,14 @@
+{
+	"Name": "Notepad Extensions",
+	"Publisher": "Dave",
+	"Version": "1.0",
+	"Description": "test case",
+	"Exe": "notepad.exe",
+	"js_Files": [
+		"ext.js"
+	],
+	"cs_Files": [
+		"Test1.cs"
+	],
+	"csc_commandline": "/nologo /t:library *.cs",
+}
